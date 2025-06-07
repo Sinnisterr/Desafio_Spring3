@@ -6,6 +6,10 @@ import com.devsuperior.desafio3.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ClientService {
 
@@ -18,7 +22,13 @@ public class ClientService {
         return dto;
     }
 
-    
+    public List<ClientDTO> findAll() {
+        List<Client> clients = clientRepository.findAll();
+        return clients.stream().map(client -> new ClientDTO(client)).toList();
+
+    }
+
+
 
 
 }

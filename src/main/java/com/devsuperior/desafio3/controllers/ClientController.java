@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -22,6 +23,12 @@ public class ClientController {
     public ClientDTO findById(@PathVariable Long id) {
         ClientDTO dto = clientService.findById(id);
         return dto;
+    }
+
+    @GetMapping
+    public List<ClientDTO> findAll() {
+        List<ClientDTO> dtos = clientService.findAll();
+        return dtos;
     }
 
 
