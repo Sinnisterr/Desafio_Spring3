@@ -1,0 +1,15 @@
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Willian Bruno', '5644989-96', 4530.0, '1978-11-20', 2);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Ricardo Mello', '1644489-36', 6329.0, '1975-05-19', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Maria Santos', '1142939-76', 2340.0, '1980-07-05', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Marcos Vinícius', '1224939-46', 7530.0, '1988-11-20', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Joaquim Alves', '2123989-56', 2330.0, '1982-01-19', 2);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('João Serafim', '1112283-36', 5340.0, '1975-01-02', 2);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Andreia Silva', '4667839-16', 9230.0, '1977-05-13', 3);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Samira Alves', '2634929-11', 1530.0, '1979-12-27', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Carla Azevedo', '2386889-96', 4340.0, '1991-07-19', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('André Constantino', '8141981-91', 3330.0, '1982-09-17', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Shirley Dana', '1343949-46', 1230.0, '1988-12-10', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Xico Xavier', '2356972-34', 4222.0, '1991-05-17', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Marlon Brando', '2252289-91', 5560.0, '1971-05-09', 3);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Stan lee', '2567899-99', 2335.0, '1985-05-05', 4);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Marcos Salviano', '1641989-11', 8430.0, '1951-09-09', 4);
