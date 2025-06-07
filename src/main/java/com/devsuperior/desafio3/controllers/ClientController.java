@@ -3,6 +3,8 @@ package com.devsuperior.desafio3.controllers;
 import com.devsuperior.desafio3.dto.ClientDTO;
 import com.devsuperior.desafio3.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +24,8 @@ public class ClientController {
     }
 
     @GetMapping
-    public List<ClientDTO> findAll() {
-        List<ClientDTO> dtos = clientService.findAll();
-        return dtos;
+    public Page<ClientDTO> findAll(Pageable pageable) {
+        return clientService.findAll(pageable);
     }
 
     @PostMapping
