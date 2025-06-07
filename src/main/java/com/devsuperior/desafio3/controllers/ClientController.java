@@ -3,13 +3,8 @@ package com.devsuperior.desafio3.controllers;
 import com.devsuperior.desafio3.dto.ClientDTO;
 import com.devsuperior.desafio3.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,6 +25,14 @@ public class ClientController {
         List<ClientDTO> dtos = clientService.findAll();
         return dtos;
     }
+
+    @PostMapping
+    public ClientDTO insert(@RequestBody ClientDTO dto) {
+        return clientService.insert(dto);
+    }
+
+
+
 
 
 //    @GetMapping

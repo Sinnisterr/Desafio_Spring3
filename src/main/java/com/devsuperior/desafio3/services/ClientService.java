@@ -28,6 +28,23 @@ public class ClientService {
 
     }
 
+    public ClientDTO insert(ClientDTO dto) {
+        Client entity = new Client(null, dto.getName(), dto.getCpf(), dto.getIncome(),
+                dto.getBirthDate(), dto.getChildren());
+        entity = clientRepository.save(entity);
+        return new ClientDTO(entity);
+//        entity.setName(dto.getName());
+//        entity.setCpf(dto.getCpf());
+//        entity.setIncome(dto.getIncome());
+//        entity.setBirthDate(dto.getBirthDate());
+//        entity.setChildren(dto.getChildren());
+//
+//        entity = clientRepository.save(entity);
+//
+//        ClientDTO result = new ClientDTO(entity);
+//        return result;
+    }
+
 
 
 
