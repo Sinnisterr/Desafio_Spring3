@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping(value = "/clients")
 public class ClientController {
@@ -28,7 +29,14 @@ public class ClientController {
 
     @PostMapping
     public ClientDTO insert(@RequestBody ClientDTO dto) {
+
         return clientService.insert(dto);
+    }
+
+    @PutMapping("/{id}")
+    public ClientDTO update(@PathVariable Long id, @RequestBody ClientDTO dto) {
+        ClientDTO result = clientService.update(id, dto);
+        return result;
     }
 
 

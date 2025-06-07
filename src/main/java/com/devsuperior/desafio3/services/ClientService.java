@@ -6,9 +6,8 @@ import com.devsuperior.desafio3.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class ClientService {
@@ -29,21 +28,31 @@ public class ClientService {
     }
 
     public ClientDTO insert(ClientDTO dto) {
-        Client entity = new Client(null, dto.getName(), dto.getCpf(), dto.getIncome(),
-                dto.getBirthDate(), dto.getChildren());
-        entity = clientRepository.save(entity);
-        return new ClientDTO(entity);
-//        entity.setName(dto.getName());
-//        entity.setCpf(dto.getCpf());
-//        entity.setIncome(dto.getIncome());
-//        entity.setBirthDate(dto.getBirthDate());
-//        entity.setChildren(dto.getChildren());
-//
+//        Client entity = new Client(null, dto.getName(), dto.getCpf(), dto.getIncome(),
+//                dto.getBirthDate(), dto.getChildren());
 //        entity = clientRepository.save(entity);
-//
-//        ClientDTO result = new ClientDTO(entity);
-//        return result;
+//        return new ClientDTO(entity);
+        Client entity = new Client();
+        updateEntityDTO(entity, dto);
+        return new ClientDTO(clientRepository.save(entity));
     }
+
+    public ClientDTO update(Long id, ClientDTO dto) {
+        Client entity = clientRepository.findById(id).get();
+        updateEntityDTO(entity, dto);
+        return new ClientDTO(clientRepository.save(entity));
+
+    }
+
+    private void updateEntityDTO(Client entity, ClientDTO dto) {
+        entity.setName(dto.getName());
+        entity.setCpf(dto.getCpf());
+        entity.setIncome(dto.getIncome());
+        entity.setBirthDate(dto.getBirthDate());
+        entity.setChildren(dto.getChildren());
+    }
+
+
 
 
 
