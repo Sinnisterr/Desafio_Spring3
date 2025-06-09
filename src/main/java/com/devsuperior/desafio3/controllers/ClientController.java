@@ -2,15 +2,18 @@ package com.devsuperior.desafio3.controllers;
 
 import com.devsuperior.desafio3.dto.ClientDTO;
 import com.devsuperior.desafio3.services.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.List;
+import java.net.URI;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/clients")
 public class ClientController {
@@ -19,35 +22,39 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/{id}")
-    public ClientDTO findById(@PathVariable Long id) {
+    public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
         ClientDTO dto = clientService.findById(id);
-        return dto;
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping
-    public Page<ClientDTO> findAll(Pageable pageable) {
-        return clientService.findAll(pageable);
+    public ResponseEntity<Page<ClientDTO>> findAll(Pageable pageable) {
+        Page<ClientDTO> page = clientService.findAll(pageable);
+        return ResponseEntity.ok(page);
     }
 
     @PostMapping
-    public ClientDTO insert(@RequestBody ClientDTO dto) {
+    public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientDTO dto) {
+        ClientDTO created = clientService.insert(dto);  // ← Service retorna com ID preenchido
 
-        return clientService.insert(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")  // ← Chave fechada corretamente
+                .buildAndExpand(created.getId())  // ← Use created.getId() (já tem ID)
+                .toUri();
+
+        return ResponseEntity.created(uri).body(created);  // ← Use .created(uri)
     }
-
     @PutMapping("/{id}")
-    public ClientDTO update(@PathVariable Long id, @RequestBody ClientDTO dto) {
+    public ResponseEntity<ClientDTO> update(@PathVariable Long id, @Valid @RequestBody ClientDTO dto) {
         ClientDTO result = clientService.update(id, dto);
-        return result;
+        return ResponseEntity.ok(result);  // 200 OK
     }
 
-   @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         clientService.delete(id);
-        return ResponseEntity.noContent().build(); // 204 No Content
-
+        return ResponseEntity.noContent().build();  // 204 No Content
     }
-
 
 
 

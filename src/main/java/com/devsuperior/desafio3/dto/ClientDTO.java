@@ -1,17 +1,31 @@
 package com.devsuperior.desafio3.dto;
 
 import com.devsuperior.desafio3.entities.Client;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class ClientDTO {
 
+
     private Long id;
+
+    @Size(min = 3, max =80, message = "Nome precisa ter de 3 a 80 caracteres")
+    @NotBlank(message = "Campo Requerido")
     private String name;
+
+    @NotBlank(message = "CPF é obrigatório")
     private String cpf;
+
+    @NotNull(message = "Renda é obrigatória")
+    @Positive(message = "Renda deve ser positiva")
     private Double income;
+
+    @NotNull(message = "Data de nascimento é obrigatória")
     private LocalDate birthDate;
+
+    @Min(value = 0, message = "Número de filhos não pode ser negativo")
     private Integer children;
 
     public ClientDTO() {
