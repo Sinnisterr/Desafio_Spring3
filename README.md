@@ -1,7 +1,7 @@
 # 🧑‍💼 Sistema de Gerenciamento de Clientes
 
 Uma API REST completa para gerenciar clientes, desenvolvida em **Java + Spring Boot** como projeto de aprendizado
-do curso da DevSuperior Professior Nelio Alves.
+do curso da DevSuperior Professor Nelio Alves.
 
 ## 📋 Sobre o Projeto
 
