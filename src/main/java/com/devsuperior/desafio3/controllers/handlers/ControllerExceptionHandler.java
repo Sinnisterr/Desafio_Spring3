@@ -15,7 +15,7 @@ import java.time.Instant;
 
         @ExceptionHandler(ResourceNotFoundException.class)
         public ResponseEntity<CustomError> customName(ResourceNotFoundException e, HttpServletRequest request) {
-            HttpStatus status = HttpStatus.NOT_FOUND;
+            HttpStatus status = HttpStatus.NOT_FOUND; // 404
             CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
             return ResponseEntity.status(status).body(err);
         }

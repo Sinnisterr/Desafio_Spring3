@@ -5,6 +5,7 @@ import com.devsuperior.desafio3.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,8 +42,10 @@ public class ClientController {
     }
 
    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         clientService.delete(id);
+        return ResponseEntity.noContent().build(); // 204 No Content
+
     }
 
 
